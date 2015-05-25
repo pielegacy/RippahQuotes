@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RippahQuotes.Models.Quotes>
+@{
+    ViewBag.Title = "Search Quotes";
+}
+<div class="display-quote">
+    @if (ViewBag.Searched) { 
+        <h2 class="emphasise text-center">Results for : @ViewBag.Search</h2>
+    }
+    else
+    {
+        <h1 class="emphasise text-center">Search</h1>
+    }
+    <form class="text-center search-form">
+        <input name="searchquery" type="search" class="form-control searchbar" />
+        <p>Press Enter To Search</p>
+    </form>
+</div>
+@if (ViewBag.Searched)
+{
+    <br />
+    <div class="quotes-container">
+    @foreach (var q in Model)
+    {
+        <div class="quote-element">
+            <a class="enter-quote" href="/Quotes/Details/@q.QuoteId"><i><h2>"@q.QuoteText"</h2></i></a>
+            <p>- @q.QuoteAuthor , <a href="/Quotes/Topics/@q.TopicId">Part of @q.Topic.TopicName)</a></p>
+        </div>
+    }
+     @if (Model.ToList().Count == 0)
+     {
+         <p class="text-center">No results found :(</p>
+     }
+    </div>
+
+}
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Rippah Long -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-6588703269901019"
+     data-ad-slot="4599851939"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>

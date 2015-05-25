@@ -1,0 +1,96 @@
+﻿@model RippahQuotes.Models.Quotes
+
+@{
+    ViewBag.Title = @Html.DisplayFor(model => model.QuoteText);
+}
+<div class="display-quote">
+    @{
+        if (Model.QuoteEffect != null) { 
+            List<string> effect_split = Model.QuoteEffect.Split(' ').ToList();
+            switch (effect_split[0])
+            {
+                    case "marquee":
+                        <marquee><h1 class="emphasise">"@Html.DisplayFor(model => model.QuoteText)"</h1></marquee>
+                        break;
+                    case "colour":
+                    case "color":
+                        if (effect_split.Count > 1) { 
+                            <h1 class="emphasise" style="color : @effect_split[1]">"@Html.DisplayFor(model => model.QuoteText)"</h1>
+                        }
+                    break;
+                
+                    default:
+                        <h1 class="emphasise">"@Html.DisplayFor(model => model.QuoteText)"</h1>
+                    break;
+                    
+
+
+            }
+        }
+        else
+        {
+            <h1 class="emphasise">"@Html.DisplayFor(model => model.QuoteText)"</h1>
+        }
+}
+    <p class="subquote">- @Html.DisplayFor(model => model.QuoteAuthor)</p>
+    @*<div>
+            <h4>Quotes</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Topic.TopicName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Topic.TopicName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuoteText)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.QuoteText)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuoteAuthor)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.QuoteAuthor)
+                </dd>
+
+            </dl>
+        </div>*@
+    @if (Model.QuotePassword != null || User.Identity.IsAuthenticated)
+    {
+        <p>
+            @Html.ActionLink("Delete", "Delete", new { id = Model.QuoteId })
+        </p>
+    }
+    <p>
+        @Html.ActionLink("Return Home", "Index") <br />
+        @Html.ActionLink("See More Quotes Like This", "Topics", new { id = Model.TopicId })
+    </p>
+    <a class="twitter-share-button" href="https://twitter.com/share"
+       data-related="twitterdev"
+       data-size="medium"
+       data-count="none">
+        Tweet
+    </a>
+    <script>
+        window.twttr = (function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {}; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); t._e = []; t.ready = function (f) { t._e.push(f); }; return t; }(document, "script", "twitter-wjs"));
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Rippah Quotes -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6588703269901019"
+         data-ad-slot="3123118736"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</div>

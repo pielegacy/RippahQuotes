@@ -1,0 +1,28 @@
+﻿@model RippahQuotes.Models.Quotes
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="display-quote">
+    <h1 class="emphasise">"@Html.DisplayFor(model => model.QuoteText)"</h1>
+    <p class="subquote">- @Html.DisplayFor(model => model.QuoteAuthor)</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <h4>Password required to delete post</h4>
+            @if (User.Identity.IsAuthenticated) { 
+                <input type="text" name="checker" class="form-control" value="@Model.QuotePassword"style="text-align:center; margin: 0 auto;" />
+            }
+            else
+            {
+                <input type="text" name="checker" class="form-control" style="text-align:center; margin: 0 auto;" />
+            }
+            <br />
+            <input type="submit" value="Delete" class="btn btn-default" /><br />
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon"/>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{
+        string title = @ViewBag.Title.ToString();
+    }
+
+    <script type="text/javascript">
+        var appInsights=window.appInsights||function(config){
+            function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
+        }({
+            instrumentationKey:"2de92dff-e847-461e-925c-89c5b22b94cb"
+        });
+        
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Rippah Quotes", "Index", "Quotes", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("New", "Create", "Quotes")</li>
+                    <li>@Html.ActionLink("Topics", "Index", "Topics")</li>
+                    <li>@Html.ActionLink("Search", "Index", "Search")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Mods", "Index", "Moderator")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @if (ViewBag.FirstTime == true)
+        {
+            <div class="tsandcs">
+                <h2>Welcome to Rippah Quotes </h2>
+                Please note that the content on this site is not necessarily posted with 
+                the consent of the websites administrators and so some quotes may offend 
+                users. <br /> If you do not wish to partake in the community with this is mind 
+                you can stop here otherwise have fun using Rippah Quotes without the intent 
+                of taking any action against the site for unsatisfactory statements <br />
+                ~ Alex Billson, Founder of Rippah Quotes. <br />
+                (This prompt will disappear when loading a new page)
+            </div>
+        }
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Alex Billson, Moose Man, Nick Aldridge, Sol Summers, Calder Wallace, Krepsin Daniels and Andrew Coe</p>
+            @if (User.Identity.IsAuthenticated == false)
+            {
+                @Html.ActionLink("Login", "Login","Account")
+            }
+            <a href="~/Home/About">Who are Rippah Quotes?</a>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

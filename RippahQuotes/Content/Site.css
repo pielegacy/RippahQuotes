@@ -1,0 +1,160 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Times New Roman';
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+    font-family: 'Times New Roman';
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.topic-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.topic-element{
+    order: 3;
+    font-family: 'Times New Roman';
+    text-align: center;
+    padding: 5px;
+    flex-grow: 1;
+    margin: 5px 10px;
+}
+.quotes-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.quote-element,
+.topic-element{
+    order: 3;
+    font-family: 'Times New Roman';
+    text-align: center;
+    padding: 5px;
+    flex-grow: 1;
+    margin: 5px 10px;
+}
+.enter-quote,
+.enter-quote:hover,
+.enter-quote:visited{
+    color: inherit;
+    text-decoration: none;
+}
+a,
+a:hover,
+a:visited{
+    color: inherit;
+    font-family: 'Times New Roman';
+}
+
+.tsandcs{
+    color: #f85d5d;
+    text-align: center;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 1px;
+    margin-top: 10px;
+    box-shadow: 0px 2px 4px #a7a7a7;
+}
+
+.navbar-inner,
+.navbar
+{
+    background:linear-gradient(#fc00ff,#00ffef);
+    color: white;
+    font-size:15px;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    border:none;
+}
+.navbar-toggle, .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{
+    border: none;
+    border-radius:0;
+    background: none;
+}
+.enter-quote:hover{
+    color: #808080;
+}
+.display-quote{
+    text-align:center;
+    font-family: 'Times New Roman';
+}
+.emphasise{
+    font-size: 50px;
+    font-family: 'Times New Roman';
+}
+.subquote{
+    font-size:18px;
+    margin-left: 20%;
+}
+.navimage{
+    height:100px;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    text-decoration:underline;
+    background-color: transparent;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+.navbar-brand{
+    font-size: 30px;
+}
+.navbar-inverse .navbar-brand{
+    color: white;
+}
+.form-control{
+    border-radius: 0px;
+}
+.form-control:focus,.btn-default,.btn-default:hover, .btn-default:focus, .btn-default:active, .active.btn-default, .open .btn-default.dropdown-toggle{
+    box-shadow: 2px 2px 2px #00ffef;
+    border-radius: 0px;
+    border-color: #fc00ff;
+}
+.btn-default:hover{
+    background: #fc00ff;
+    color: white;
+}
+.createlink{
+    text-align:center;
+    font-size: 16px;
+
+}
+.topic-header{
+    text-align: center;
+}
+.createlink:hover {
+    text-decoration: underline;
+    color: #fc00ff;
+    text-shadow: 2px 2px 2px #00ffef;
+}
+::selection{
+    background:#fc00ff;
+    color: #00ffef;
+}
+.paginate{
+    font-size: 20px;
+    padding: 0 10px;
+}
+.searchbar{
+    width: 600px;
+    margin: 0 auto;
+    font-size: 18px;
+    height: 40px;
+}

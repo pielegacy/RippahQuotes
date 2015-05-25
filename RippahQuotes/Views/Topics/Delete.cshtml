@@ -1,0 +1,20 @@
+﻿@model RippahQuotes.Models.Topic
+@using Recaptcha.Web.Mvc;
+
+@{
+    ViewBag.Title = "Delete " + Model.TopicName;
+}
+
+<div class="display-quote">
+    <h1 class="emphasise">@Html.DisplayFor(model => model.TopicName)</h1>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <h4>Password required to delete post</h4>
+            <input type="text" name="checker" class="form-control" style="text-align:center; margin: 0 auto;" /><br />
+            <input type="submit" value="Delete" class="btn btn-default" /><br />
+        </div>
+    }
+</div>

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace RippahQuotes.Models
 {
@@ -25,6 +26,7 @@ namespace RippahQuotes.Models
         public Topic Topic { get; set; }
         [Display(Name = "Delete Password")]
         [MaxLength(20)]
+        //[ScriptIgnore]
         public string QuotePassword { get; set; }
         [Display(Name = "Quote Effect")]
         public string QuoteEffect { get; set; }
@@ -44,6 +46,7 @@ namespace RippahQuotes.Models
         [Display(Name="Delete Password")]
         [DataType(DataType.Password)]
         [StringLength(30)]
+        //[ScriptIgnore]
         public string TopicPassword { get; set; }
         [Display(Name="Topic Amount")]
         public int TopicAmount { get; set; }

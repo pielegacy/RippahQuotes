@@ -93,3 +93,4 @@ F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\bin\System.Web.Http.Web
 F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\bin\System.Net.Http.Formatting.xml
 F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\bin\System.Web.Http.xml
 F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\bin\System.Web.Http.WebHost.xml
+F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\obj\Debug\RippahQuotes.Migrations.ProtectPasswords.resources

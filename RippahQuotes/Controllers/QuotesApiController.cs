@@ -19,7 +19,9 @@ namespace RippahQuotes.Controllers
         // GET: api/QuotesApi
         public IQueryable<Quotes> GetQuotes()
         {
-            return db.Quotes;
+            //Includes topics as well//
+
+            return db.Quotes.Include(q => q.Topic.TopicName);
         }
 
         // GET: api/QuotesApi/5

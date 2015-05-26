@@ -26,7 +26,7 @@ namespace RippahQuotes.Models
         public Topic Topic { get; set; }
         [Display(Name = "Delete Password")]
         [MaxLength(20)]
-        //[ScriptIgnore]
+        [ScriptIgnore]
         public string QuotePassword { get; set; }
         [Display(Name = "Quote Effect")]
         public string QuoteEffect { get; set; }

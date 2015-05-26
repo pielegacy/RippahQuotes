@@ -19,7 +19,13 @@ namespace RippahQuotes.Controllers
         // GET: api/QuotesApi
         public IQueryable<Quotes> GetQuotes()
         {
-            return db.Quotes;
+            IQueryable<Quotes> quotes = db.Quotes.Include(q => q.Topic);
+            foreach (var q in quotes)
+            {
+                q.QuotePassword = "hidden";
+                q.Topic.TopicPassword = "hidden";
+            }
+            return quotes;
         }
 
         // GET: api/QuotesApi/5
@@ -34,7 +40,6 @@ namespace RippahQuotes.Controllers
 
             return Ok(quotes);
         }
-        
         // PUT: api/QuotesApi/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutQuotes(int id, Quotes quotes)

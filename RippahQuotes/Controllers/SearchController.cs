@@ -19,11 +19,13 @@ namespace RippahQuotes.Controllers
     {
         private QuotesDb db = new QuotesDb();
         // GET: Search
+        // Allows for quotes to be searched by what's contained in the text
         public ActionResult Index()
         {
             ViewBag.Searched = false;
             if (Request.QueryString["searchquery"] != null)
             {
+                // Basic (probably inefficient) Regex Searching Algorithm
                 ViewBag.Search = Request.QueryString["searchquery"];
                 List<Quotes> searchResults = new List<Quotes>();
                 ViewBag.Searched = true;

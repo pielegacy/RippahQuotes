@@ -17,9 +17,11 @@ namespace RippahQuotes.Controllers
         private QuotesDb db = new QuotesDb();
 
         // GET: api/QuotesApi
+        // Returns all quotes in a JSON array
         public IQueryable<Quotes> GetQuotes()
         {
             IQueryable<Quotes> quotes = db.Quotes.Include(q => q.Topic);
+            // Doesn't return quote passwords as that would be a security risk
             foreach (var q in quotes)
             {
                 q.QuotePassword = "hidden";
@@ -29,6 +31,7 @@ namespace RippahQuotes.Controllers
         }
 
         // GET: api/QuotesApi/5
+        // Used to get details for a specific quote
         [ResponseType(typeof(Quotes))]
         public IHttpActionResult GetQuotes(int id)
         {
@@ -77,6 +80,7 @@ namespace RippahQuotes.Controllers
 
         // POST: api/QuotesApi
         [ResponseType(typeof(Quotes))]
+        // Used To Add Quotes
         public IHttpActionResult PostQuotes(Quotes quotes)
         {
             if (!ModelState.IsValid)
@@ -114,7 +118,7 @@ namespace RippahQuotes.Controllers
             }
             base.Dispose(disposing);
         }
-        
+        // USed to Check Quotes Existence
         private bool QuotesExists(int id)
         {
             return db.Quotes.Count(e => e.QuoteId == id) > 0;

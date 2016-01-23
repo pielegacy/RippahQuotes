@@ -12,14 +12,14 @@ namespace RippahQuotes.Controllers
         {
             return RedirectToAction("Index", "Quotes");
         }
-
+        // About Page Unused
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
+        // About Page Unused
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

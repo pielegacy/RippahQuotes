@@ -54,7 +54,7 @@ namespace RippahQuotes.Controllers
             RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
             if (string.IsNullOrEmpty(recaptchaHelper.Response))
             {
-                ModelState.AddModelError("", "Shit's fried mate");
+                ModelState.AddModelError("", "Captcha's Broken");
             }
             RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
 

@@ -17,17 +17,19 @@ namespace RippahQuotes.Controllers
     public class QuotesController : Controller
     {
         private QuotesDb db = new QuotesDb();
-        string[] triggerwords = { "delete", "cucked", "xD" };
         bool isPremium = true;
         // GET: Quotes
+        // The Index Page
         public ActionResult Index(int? p)
         {
             if (p == null || p == 0)
             {
                 p = 1;
             }
+            // Checks to see if it's users first time using the website
             if (Request.Cookies["Informed"] == null)
             {
+                // Displays welcome message
                 ViewBag.FirstTime = true;
                 HttpCookie informed = new HttpCookie("Informed");
                 Response.SetCookie(informed);
@@ -37,6 +39,7 @@ namespace RippahQuotes.Controllers
             return View(quotes.ToList());
         }
 
+        // Displays Topics which are the categories for quotes
         public ActionResult Topics(int? id)
         {
             var quotes = db.Quotes.Include(q => q.Topic);
@@ -63,6 +66,7 @@ namespace RippahQuotes.Controllers
             return View(quotes_filtered);
         }
         // GET: Quotes/Details/5
+        // Displays a full screen version of the quote
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -86,10 +90,12 @@ namespace RippahQuotes.Controllers
         // POST: Quotes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Quote Adding
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "QuoteId,TopicId,QuoteText,QuoteAuthor,QuotePassword")] Quotes quotes)
         {
+            // Checks for any user defined quote effects (Hidden Feature)
             List<string> QuoteSplit = quotes.QuoteText.Split(' ').ToList();
             //Lower Case Quote Effects//
             switch (QuoteSplit[0]){
@@ -111,7 +117,7 @@ namespace RippahQuotes.Controllers
             RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
             if (string.IsNullOrEmpty(recaptchaHelper.Response))
             {
-                ModelState.AddModelError("", "Shit's fried mate");
+                ModelState.AddModelError("", "You're missing the captcha");
             }
             RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
 
@@ -193,7 +199,7 @@ namespace RippahQuotes.Controllers
             RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
             if (string.IsNullOrEmpty(recaptchaHelper.Response))
             {
-                ModelState.AddModelError("", "Shit's fried mate");
+                ModelState.AddModelError("", "You're missing the captcha");
             }
             RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
 

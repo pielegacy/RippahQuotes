@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 namespace RippahQuotes.Models
 {
     //Quote Model//
+    // Uses entity framwork to define a "Code-First" database
     public class Quotes
     {
         [Key]
@@ -22,6 +23,7 @@ namespace RippahQuotes.Models
         [MaxLength(250)]
         [Required]
         public string QuoteAuthor { get; set; }
+        // Essentially defines the foreign keys
         [Display(Name = "Topic")]
         public Topic Topic { get; set; }
         [Display(Name = "Delete Password")]
@@ -69,7 +71,7 @@ namespace RippahQuotes.Models
             });
             context.Topics.Add(new Topic
             {
-                TopicName = "Racism"
+                TopicName = "Possibly Offensive"
             });
             context.Topics.Add(new Topic
             {
@@ -77,7 +79,7 @@ namespace RippahQuotes.Models
             });
             context.Topics.Add(new Topic
             {
-                TopicName = "Shit Quotes"
+                TopicName = "Terrible Quotes"
             });
             context.Topics.Add(new Topic
             {

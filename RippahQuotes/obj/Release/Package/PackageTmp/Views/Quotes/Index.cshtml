@@ -2,13 +2,7 @@
 @{
     bool premium = false;
     int page = ViewBag.page;
-    if (premium == true)
-    {
-        ViewBag.Title = "Ripper Quotes Premium"; 
-    }
-    else { 
-        ViewBag.Title = "Ripper Quotes";
-    }
+    ViewBag.Title = "Magnificent Sayings";
 }
 <!--<table class="table">
     <tr>
@@ -23,7 +17,6 @@
         </th>
         <th></th>
     </tr>-->
-<marquee><a href="https://onedrive.live.com/redir?resid=E88BCE0DE02D0C11!242991&authkey=!ACIeHJ5ee1zOH4s&ithint=file%2czip" class="advert">Download The Beta Version For Ripper Quotes Desktop</a></marquee>
 <div class="quotes-container">
     @{
         var items = Model.ToList();

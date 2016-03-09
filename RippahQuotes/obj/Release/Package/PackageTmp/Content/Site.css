@@ -64,19 +64,18 @@ a:visited{
 }
 
 .tsandcs{
-    color: #f85d5d;
+    color: white;
     text-align: center;
     padding: 10px;
     font-size: 15px;
     border-radius: 1px;
     margin-top: 10px;
-    box-shadow: 0px 2px 4px #a7a7a7;
 }
 
 .navbar-inner,
 .navbar
 {
-    background: linear-gradient(#00ffef,#fc00ff);
+    background: linear-gradient(#9D1309, #40E0D0);
     color: white;
     font-size:15px;
 }
@@ -123,9 +122,11 @@ a:visited{
     border-radius: 0px;
 }
 .form-control:focus,.btn-default,.btn-default:hover, .btn-default:focus, .btn-default:active, .active.btn-default, .open .btn-default.dropdown-toggle{
-    box-shadow: 2px 2px 2px #00ffef;
+    /*box-shadow: 2px 2px 2px #00ffef;
+    border-color: #fc00ff;*/
+    box-shadow: 2px 2px 2px #9D1309;
+    border-color: #40E0D0;
     border-radius: 0px;
-    border-color: #fc00ff;
 }
 .btn-default:hover{
     background: #fc00ff;
@@ -145,8 +146,10 @@ a:visited{
     text-shadow: 2px 2px 2px #00ffef;
 }
 ::selection{
-    background:#fc00ff;
-    color: #00ffef;
+    /*background:#fc00ff;
+    color: #00ffef;*/
+    background: #40E0D0;
+    color: #9D1309;
 }
 .paginate{
     font-size: 20px;
@@ -162,4 +165,10 @@ a:visited{
 }
 .advert{
     font-size: 30px;
+}
+body{
+    background-image: url('https://pbs.twimg.com/profile_images/514282890524258305/-0LF7R2X.jpeg');
+    background-size: 100%;
+    width: 100%;
+    color: white;
 }

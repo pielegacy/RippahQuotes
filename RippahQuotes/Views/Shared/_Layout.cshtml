@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon"/>
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -31,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Rippah Quotes", "Index", "Quotes", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Ripper Quotes", "Index", "Quotes", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -50,25 +51,36 @@
         @if (ViewBag.FirstTime == true)
         {
             <div class="tsandcs">
-                <h2>Welcome to Rippah Quotes </h2>
+                <h2>Welcome to Ripper Quotes </h2>
                 Please note that the content on this site is not necessarily posted with 
                 the consent of the websites administrators and so some quotes may offend 
                 users. <br /> If you do not wish to partake in the community with this is mind 
-                you can stop here otherwise have fun using Rippah Quotes without the intent 
+                you can stop here otherwise have fun using Grouse Quotations without the intent 
                 of taking any action against the site for unsatisfactory statements <br />
-                ~ Alex Billson, Founder of Rippah Quotes. <br />
+                ~ Alex Billson, Founder of Ripper Quotes Version 2.0 <br />
                 (This prompt will disappear when loading a new page)
             </div>
         }
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Alex Billson, Moose Man, Nick Aldridge, Sol Summers, Calder Wallace, Krepsin Daniels and Andrew Coe</p>
-            @if (User.Identity.IsAuthenticated == false)
+            <span class="adsbygoogle">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Grouse Quotations Test -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6588703269901019"
+                     data-ad-slot="9010457936"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                </span>
+            <p>&copy; @DateTime.Now.Year - Alex Billson, Nick Aldridge and Andrew Coe</p>
+            @*@if (User.Identity.IsAuthenticated == false)
             {
                 @Html.ActionLink("Login", "Login","Account")
-            }
-            <a href="~/Home/About">Who are Rippah Quotes?</a>
+            }*@
         </footer>
     </div>
 

@@ -30,6 +30,8 @@ namespace RippahQuotes.Models
         public string QuotePassword { get; set; }
         [Display(Name = "Quote Effect")]
         public string QuoteEffect { get; set; }
+        [Display(Name = "Quote Ripperness")]
+        public int QuoteRating { get; set; }
     }
     //Topic Model//
     public class Topic
@@ -51,6 +53,19 @@ namespace RippahQuotes.Models
         [Display(Name="Topic Amount")]
         public int TopicAmount { get; set; }
     }
+    // Vote Model
+    public class Vote
+    {
+        [Key]
+        public int VoteId { get; set; }
+        [Required]
+        public virtual int QuoteId { get; set; }
+        [Required]
+        public string IP { get; set; }
+        [Required]
+        public Quotes Quote { get; set; }
+    }
+    
     public class QuotesDbInit : System.Data.Entity.DropCreateDatabaseAlways<QuotesDb>
     {
         protected override void Seed(QuotesDb context)
@@ -69,19 +84,22 @@ namespace RippahQuotes.Models
             });
             context.Topics.Add(new Topic
             {
-                TopicName = "Racism"
+                TopicName = "Possibly Offensive"
             });
             context.Topics.Add(new Topic
             {
-                TopicName = "Jarrod"
+                TopicName = "Jarrod 2.0"
             });
             context.Topics.Add(new Topic
             {
-                TopicName = "Shit Quotes"
+                TopicName = "Terrible Quotes"
             });
             context.Topics.Add(new Topic
             {
                 TopicName = "Roasts"
+            });
+            context.Topics.Add(new Topic {
+                TopicName = "Weed"
             });
             base.Seed(context);
         }

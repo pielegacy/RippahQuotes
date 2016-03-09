@@ -34,7 +34,7 @@ namespace RippahQuotes.Controllers
             }
             ViewBag.page = p;
             var quotes = db.Quotes.Include(q => q.Topic);
-            return View(quotes.ToList());
+            return View(quotes.OrderByDescending(q => q.QuoteId).ToList());
         }
 
         public ActionResult Topics(int? id)
@@ -76,9 +76,22 @@ namespace RippahQuotes.Controllers
             }
             return View(quotes);
         }
+        // Reset Shit Now
+        //public ActionResult SetVotes()
+        //{
+        //    foreach (var q in db.Quotes)
+        //    {
+        //        q.QuoteRating = 0;
+        //    }
+        //    return RedirectToAction("Index");
+        //}
         // GET: Quotes/Create
         public ActionResult Create()
         {
+            if (TempData["Worked"] != null)
+            {
+                ViewBag.Worked = TempData["Worked"].ToString();
+            }
             ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "TopicName");
             return View();
         }
@@ -90,6 +103,7 @@ namespace RippahQuotes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "QuoteId,TopicId,QuoteText,QuoteAuthor,QuotePassword")] Quotes quotes)
         {
+            var verification = Request.Form["verify"];
             List<string> QuoteSplit = quotes.QuoteText.Split(' ').ToList();
             //Lower Case Quote Effects//
             switch (QuoteSplit[0]){
@@ -120,7 +134,8 @@ namespace RippahQuotes.Controllers
                 ModelState.AddModelError("", "Incorrect captcha answer.");
             }
 
-            if (ModelState.IsValid && QuoteSplit.Count > 0)
+            //if (ModelState.IsValid && QuoteSplit.Count > 0)
+            if (QuoteSplit.Count > 0 && verification == "on")
             {
                 //Init Topic Count//
                 /*
@@ -142,13 +157,38 @@ namespace RippahQuotes.Controllers
                         t.TopicAmount += 1;
                     }
                 }
+                quotes.QuoteRating = 0;
                 db.Quotes.Add(quotes);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = quotes.QuoteId });
             }
+            else
+            {
+                TempData["Worked"] = "False";
+                return RedirectToAction("Create");
+            }
 
             ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "TopicName", quotes.TopicId);
             return View("Details", quotes);
+        }
+        public ActionResult AddVote(int id)
+        {
+            string ip = Request.UserHostAddress;
+            Quotes quote = db.Quotes.Find(id);
+            IEnumerable<Vote> votecheck = from v in db.Votes where v.IP == ip && v.QuoteId == id select v;
+            if (votecheck.Count() == 0)
+            {
+                Vote newvote = new Vote()
+                {
+                    IP = ip,
+                    QuoteId = id,
+                    Quote = db.Quotes.Find(id)
+                };
+                db.Votes.Add(newvote);
+                quote.QuoteRating += 1;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         // GET: Quotes/Edit/5
         /*public ActionResult Edit(int? id)

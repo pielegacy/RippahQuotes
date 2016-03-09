@@ -94,3 +94,7 @@ F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\bin\System.Net.Http.For
 F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\bin\System.Web.Http.xml
 F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\bin\System.Web.Http.WebHost.xml
 F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\obj\Release\RippahQuotes.Migrations.ProtectPasswords.resources
+F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\obj\Release\RippahQuotes.Migrations.Ratings.resources
+F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\obj\Release\RippahQuotes.Migrations.RatingsActually.resources
+F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\obj\Release\RippahQuotes.Migrations.VotingSystem.resources
+F:\Documents HDD\Visual Studio\RippahQuotes\RippahQuotes\obj\Release\RippahQuotes.Migrations.VotingSystemLegit.resources

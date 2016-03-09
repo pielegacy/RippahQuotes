@@ -51,18 +51,6 @@ namespace RippahQuotes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TopicId,TopicName,TopicDescription,TopicPassword")] Topic topic)
         {
-            RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
-            if (string.IsNullOrEmpty(recaptchaHelper.Response))
-            {
-                ModelState.AddModelError("", "Shit's fried mate");
-            }
-            RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
-
-            if (recaptchaResult != RecaptchaVerificationResult.Success)
-            {
-                ModelState.AddModelError("", "Incorrect captcha answer.");
-            }
-
             if (ModelState.IsValid)
             {
                 db.Topics.Add(topic);

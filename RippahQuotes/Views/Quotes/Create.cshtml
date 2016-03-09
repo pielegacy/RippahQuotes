@@ -6,7 +6,10 @@
 }
 
 <h2>Create</h2>
-
+@if (ViewBag.Worked == "False")
+{
+    <h1>How about you actually post a ripper quote this time...</h1>
+}
 
 @using (Html.BeginForm())
 {
@@ -41,12 +44,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.QuotePassword, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.QuotePassword, "", new { @class = "text-danger" })
-                <br />
-                @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)
+                @*<br />
+                @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)*@
             </div>
         </div>
         <div class="form-group">
+            @Html.Label("Is this a truly 'ripper' quote?", htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
+                <input name="verify" type="checkbox" class="center-check"/>
             </div>
         </div>
         <div class="form-group">
@@ -59,3 +64,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+@*TODO: Add Hidden Submit Button*@

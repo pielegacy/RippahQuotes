@@ -69,6 +69,8 @@
             @Html.ActionLink("Delete", "Delete", new { id = Model.QuoteId })
         </p>
     }
+    @*<p>This Quote Has Received @Model.QuoteRating Quote Votes</p>
+    <button class="vote">Vote For Dis Quote</button>*@
     <p>
         @Html.ActionLink("Return Home", "Index") <br />
         @Html.ActionLink("See More Quotes Like This", "Topics", new { id = Model.TopicId })
@@ -79,18 +81,14 @@
        data-count="none">
         Tweet
     </a>
-    <script>
-        window.twttr = (function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {}; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); t._e = []; t.ready = function (f) { t._e.push(f); }; return t; }(document, "script", "twitter-wjs"));
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(".vote").click(function () {
+            $.post("../../api/Votes", { id: "@Model.QuoteId" }, function () {
+                alert("You have voted");
+            }).fail(function () {
+                alert("Fuck");
+            });
+        });
     </script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Rippah Quotes -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-6588703269901019"
-         data-ad-slot="3123118736"
-         data-ad-format="auto"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
 </div>

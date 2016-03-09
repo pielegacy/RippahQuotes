@@ -22,6 +22,7 @@ namespace RippahQuotes.Models
         public System.Data.Entity.DbSet<RippahQuotes.Models.Quotes> Quotes { get; set; }
 
         public System.Data.Entity.DbSet<RippahQuotes.Models.Topic> Topics { get; set; }
-    
+        
+        public DbSet<RippahQuotes.Models.Vote> Votes { get; set; }
     }
 }

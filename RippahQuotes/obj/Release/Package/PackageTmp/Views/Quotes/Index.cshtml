@@ -4,10 +4,10 @@
     int page = ViewBag.page;
     if (premium == true)
     {
-        ViewBag.Title = "Rippah Quotes Premium"; 
+        ViewBag.Title = "Ripper Quotes Premium"; 
     }
     else { 
-        ViewBag.Title = "Rippah Quotes";
+        ViewBag.Title = "Ripper Quotes";
     }
 }
 <!--<table class="table">
@@ -23,23 +23,22 @@
         </th>
         <th></th>
     </tr>-->
+<marquee><a href="https://onedrive.live.com/redir?resid=E88BCE0DE02D0C11!242991&authkey=!ACIeHJ5ee1zOH4s&ithint=file%2czip" class="advert">Download The Beta Version For Ripper Quotes Desktop</a></marquee>
 <div class="quotes-container">
     @{
         var items = Model.ToList();
+        
         int maxpage = items.Count / 26;
         int startpoint = items.Count() - 1;
-        if (page > 1)
-        {
-            startpoint -= 26 * (page - 1);
-        }
-        for (var i = startpoint; i >= items.Count() - 26 * page && i > 0; i--)
+        startpoint = 26 * page;
+        for (var i = startpoint - 26; i < startpoint && i < items.Count; i++)
         {
             <div class="quote-element">
-                <a class="enter-quote" href="/Quotes/Details/@items[i].QuoteId"><i><h2>"@Html.DisplayFor(modelItem => items[i].QuoteText)"</h2></i></a>
+                <a class="enter-quote" href="/Quotes/Details/@items[i].QuoteId"><h2>"@Html.DisplayFor(modelItem => items[i].QuoteText)"</h2></a>
                 <p>- @Html.DisplayFor(modelItem => items[i].QuoteAuthor) , <a href="/Quotes/Topics/@items[i].TopicId">Part of @Html.DisplayFor(modelItem => items[i].Topic.TopicName)</a></p>
             </div>
         }
-    }
+}
 </div>
 <div class="text-center">
     <strong>Page</strong><br />
@@ -57,12 +56,3 @@
     }
     <br />
 </div>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Rippah Long -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-6588703269901019"
-     data-ad-slot="4599851939"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>

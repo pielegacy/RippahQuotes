@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using RippahQuotes.Models;
+using System.Text.RegularExpressions;
 
 namespace RippahQuotes.Controllers
 {
@@ -25,7 +26,7 @@ namespace RippahQuotes.Controllers
                 q.QuotePassword = "hidden";
                 q.Topic.TopicPassword = "hidden";
             }
-            return quotes;
+            return quotes.OrderByDescending(q => q.QuoteId);
         }
 
         // GET: api/QuotesApi/5
@@ -36,6 +37,21 @@ namespace RippahQuotes.Controllers
             if (quotes == null)
             {
                 return NotFound();
+            }
+
+            return Ok(quotes);
+        }
+        // GET: api/QuotesApi/5
+        [ResponseType(typeof(Quotes))]
+        public IHttpActionResult SearchQuotes(string search)
+        {
+            List<Quotes> results = new List<Quotes>();
+            var quotes = GetQuotes();
+            foreach(var q in quotes)
+            {
+                if (Regex.IsMatch(q.QuoteText, search, RegexOptions.IgnoreCase)){
+                    results.Add(q);
+                }
             }
 
             return Ok(quotes);
@@ -89,7 +105,6 @@ namespace RippahQuotes.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = quotes.QuoteId }, quotes);
         }
-
         // DELETE: api/QuotesApi/5
         [ResponseType(typeof(Quotes))]
         public IHttpActionResult DeleteQuotes(int id)

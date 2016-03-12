@@ -190,6 +190,11 @@ namespace RippahQuotes.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Marquee(int id)
+        {
+            Quotes quote = db.Quotes.Find(id);
+            return View("Marquee", quote);
+        }
         // GET: Quotes/Edit/5
         /*public ActionResult Edit(int? id)
         {

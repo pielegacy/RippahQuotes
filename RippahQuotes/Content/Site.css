@@ -75,7 +75,8 @@ a:visited{
 .navbar-inner,
 .navbar
 {
-    background: linear-gradient(#9D1309, #40E0D0);
+    /*background: linear-gradient(#9D1309, #40E0D0);*/
+    background : #9D1309;
     color: white;
     font-size:15px;
 }
@@ -129,8 +130,6 @@ a:visited{
     border-radius: 0px;
 }
 .btn-default:hover{
-    background: #fc00ff;
-    color: white;
 }
 .createlink{
     text-align:center;
@@ -171,4 +170,8 @@ body{
     background-size: 100%;
     width: 100%;
     color: white;
+}
+marquee{
+    font-size: 120px;
+    margin: 120px 0px;
 }

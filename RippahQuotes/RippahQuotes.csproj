@@ -371,6 +371,7 @@
     <Content Include="Views\Quotes\CreateByTopic.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Quotes\Marquee.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

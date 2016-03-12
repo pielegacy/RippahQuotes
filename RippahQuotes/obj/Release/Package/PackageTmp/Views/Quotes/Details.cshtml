@@ -69,12 +69,16 @@
             @Html.ActionLink("Delete", "Delete", new { id = Model.QuoteId })
         </p>
     }
+    <p>
+        @Html.ActionLink("View In Immersion Mode", "Marquee", new { id = Model.QuoteId })
+    </p>
     @*<p>This Quote Has Received @Model.QuoteRating Quote Votes</p>
     <button class="vote">Vote For Dis Quote</button>*@
     <p>
         @Html.ActionLink("Return Home", "Index") <br />
         @Html.ActionLink("See More Quotes Like This", "Topics", new { id = Model.TopicId })
     </p>
+    <div class="fb-share-button" data-href="http://ripperquotes.azurewebsites.net/Quotes/Details/@Model.QuoteId" data-layout="button_count"></div><br />
     <a class="twitter-share-button" href="https://twitter.com/share"
        data-related="twitterdev"
        data-size="medium"
